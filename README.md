@@ -24,3 +24,7 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
     python -m venv env
     source env/bin/activate    # Linux/Mac
     env\Scripts\activate       # Windows
+
+3. Instalar dependencias:
+   ```bash
+    pip install -r requirements.txt
