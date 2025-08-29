@@ -28,3 +28,9 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
 3. Instalar dependencias:
    ```bash
     pip install -r requirements.txt
+
+▶️ Ejecución
+
+1. Ejecutar la aplicación:
+   ```bash
+   python app.py
