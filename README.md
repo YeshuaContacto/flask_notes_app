@@ -73,6 +73,9 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
 
 5. Abre un Pull Request 🚀
 
+## 📄 Licencia
+Este proyecto se distribuye bajo la licencia MIT.
+
 
 
 
