@@ -4,8 +4,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    role = "otro"
-    return render_template("home.html", role=role)
+    role = "admin"
+    notes = ["Nota 1", "Nota 2", "Nota 3"]
+    return render_template("home.html", role=role, notes=notes)
 
 
 @app.route("/acerca-de")
