@@ -15,6 +15,7 @@
             {{ note.title }}
             <br>
             {{ note.content }}
+            <a href="{{ url_for('edit_note', id=note.id)}}">Editar ✏️</a>
         </li>
         {% else %}
         Aún no se han creado notas
