@@ -28,9 +28,9 @@ class Note(db.Model):
 
 @app.route("/")
 def home():
-    role = "admin"
-    notes = ["Nota 1", "Nota 2", "Nota 3"]
-    return render_template("home.html", role=role, notes=notes)
+    notes = Note.query.all()
+    return render_template("home.html", notes=notes)
+
 
 
 @app.route("/acerca-de")
@@ -61,9 +61,16 @@ def confirmation():
 @app.route("/crear-nota", methods=["GET", "POST"])
 def create_note():
     if request.method == "POST":
-        note = request.form.get("note", "No encontrada")
-        return redirect(
-            url_for("confirmation", note=note)
+        title = request.form.get("title", "")
+        content = request.form.get("content", "")
+
+        note_db = Note(
+            title=title, content=content
         )
+
+        db.session.add(note_db)
+        db.session.commit()
+
+        return redirect(url_for("home"))
     return render_template("note_form.html")
 
