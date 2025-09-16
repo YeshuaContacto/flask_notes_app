@@ -19,8 +19,17 @@ def create_note():
         title = request.form.get("title", "")
         content = request.form.get("content", "")
 
-        note_db = Note(title=title, content=content)
+        if not len(title.strip()) > 2:
+            flash("El título es muy corto, minimo 2 caracteres", "error")
+            return render_template("note_form.html")
+        
 
+        if not len(content.strip()) > 3:
+            flash("El contenido es muy corto, minimo 3 caracteres", "error")
+            return render_template("note_form.html")
+
+
+        note_db = Note(title=title, content=content)
         db.session.add(note_db)
         db.session.commit()
         flash("Nota creada", "success")
