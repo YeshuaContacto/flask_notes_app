@@ -1,4 +1,4 @@
-from flask import redirect, request, render_template, url_for, Blueprint, flash
+from flask import redirect, request, render_template, url_for, Blueprint, flash, session
 from models import Note, db
 
 
@@ -6,6 +6,9 @@ notes_bp = Blueprint("notes", __name__)
 
 @notes_bp.route("/")
 def home():
+    if "user" not in session:
+         flash("Para poder ver las notas debes iniciar sessión", "error")
+         return redirect(url_for("auth.login"))
     notes = Note.query.all()
     return render_template("home.html", notes=notes)
 
