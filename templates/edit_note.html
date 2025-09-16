@@ -1,22 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear una nueva nota</title>
-</head>
-<body>
-    <h1>Crear una nueva nota</h1>
-    <form method="POST">
+{% extends "base.html" %}
 
+{% block title %}Editar Nota{% endblock %}
 
-        <label for="title">Título</label>
-        <input type="text" name="title" id="title" value="{{ note.title }}">
-        <br>
-        <label for="Content">Contenido</label>
-        <input type="text" name="content" id="content" value="{{ note.content }}">
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Editar Nota</h1>
 
-        <input type="submit" value="Guardar">
+    <form method="POST" class="space-y-5">
+        <!-- Campo título -->
+        <div>
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+            <input type="text" name="title" id="title" value="{{ note.title }}"
+                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <!-- Campo contenido -->
+        <div>
+            <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Contenido</label>
+            <textarea name="content" id="content" rows="6"
+                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">{{ note.content }}</textarea>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex justify-end space-x-3">
+            <a href="{{ url_for('notes.home') }}"
+                class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Cancelar</a>
+            <button type="submit"
+                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Guardar Cambios</button>
+        </div>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
