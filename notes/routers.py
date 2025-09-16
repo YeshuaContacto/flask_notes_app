@@ -24,6 +24,11 @@ def create_note():
             return render_template("note_form.html")
         
 
+        if  len(title.strip()) > 30:
+            flash("El título es muy largo, máximo 30 caracteres", "error")
+            return render_template("note_form.html")
+
+
         if not len(content.strip()) > 3:
             flash("El contenido es muy corto, minimo 3 caracteres", "error")
             return render_template("note_form.html")
@@ -43,6 +48,22 @@ def edit_note(id):
     if request.method == "POST":
         title = request.form.get("title", "")
         content = request.form.get("content", "")
+
+        if not len(title.strip()) > 2:
+            flash("El título es muy corto, minimo 2 caracteres", "error")
+            return render_template("edit_note.html", note=note)
+        
+
+        if  len(title.strip()) > 30:
+            flash("El título es muy largo, máximo 30 caracteres", "error")
+            return render_template("edit_note.html", note=note)
+
+
+        if not len(content.strip()) > 3:
+            flash("El contenido es muy corto, minimo 3 caracteres", "error")
+            return render_template("edit_note.html", note=note)
+
+
         note.title = title
         note.content = content
         db.session.commit()
