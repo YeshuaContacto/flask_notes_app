@@ -9,6 +9,9 @@ app.config.from_object(Config)
 db.init_app(app)
 app.register_blueprint(notes_bp)
 
+with app.app_context():
+    db.create_all()
+
 @app.route("/acerca-de")
 def about():
     return "Esto es una app de notas."
