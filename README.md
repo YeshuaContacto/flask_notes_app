@@ -2,15 +2,13 @@
 
 Aplicación web sencilla desarrollada con Flask que permite crear, editar y eliminar notas.
 Perfecta como proyecto de práctica para aprender desarrollo web con Python y Flask, incluyendo gestión de rutas, plantillas con Jinja2, y persistencia de datos con SQLAlchemy.
+
 ---
 
 ## 🚀 Características  
 - Crear, editar y eliminar notas de manera sencilla.
-
 - Estructura modular y fácil de escalar para proyectos más grandes.
-
 - Entorno virtual (venv) para aislar dependencias y mantener el proyecto limpio.
-
 - Uso de Flask, SQLAlchemy y Jinja2 para buenas prácticas de desarrollo web.
 ---
 
@@ -70,8 +68,13 @@ Perfecta como proyecto de práctica para aprender desarrollo web con Python y Fl
 
 ## 🛠️ Tecnologías
 
-- Python  
-- Flask  
+- Python – Lenguaje de programación principal.
+- Flask – Microframework web para desarrollo de aplicaciones.
+- SQLAlchemy – ORM para gestión de bases de datos.
+- Jinja2 – Motor de plantillas para renderizado dinámico de HTML.
+- TailwindCSS – Framework CSS para diseño moderno y responsivo.
+- SQLite – Base de datos ligera integrada.
+- venv – Entorno virtual para aislar dependencias.
 
 ## 🤝 Contribución
 ¡Las contribuciones son bienvenidas!
