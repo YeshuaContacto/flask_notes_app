@@ -1,15 +1,17 @@
 # 📝 Flask Notes App  
 
-Aplicación web sencilla desarrollada con **Flask** para crear y gestionar notas.  
-Este proyecto es ideal como base para practicar el desarrollo con Python y Flask.  
-
+Aplicación web sencilla desarrollada con Flask que permite crear, editar y eliminar notas.
+Perfecta como proyecto de práctica para aprender desarrollo web con Python y Flask, incluyendo gestión de rutas, plantillas con Jinja2, y persistencia de datos con SQLAlchemy.
 ---
 
 ## 🚀 Características  
-- Creación y gestión de notas.  
-- Estructura simple y fácil de escalar.  
-- Entorno virtual para aislar dependencias.  
+- Crear, editar y eliminar notas de manera sencilla.
 
+- Estructura modular y fácil de escalar para proyectos más grandes.
+
+- Entorno virtual (venv) para aislar dependencias y mantener el proyecto limpio.
+
+- Uso de Flask, SQLAlchemy y Jinja2 para buenas prácticas de desarrollo web.
 ---
 
 ## ⚙️ Instalación  
@@ -53,7 +55,7 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
    │   ├── edit_note.html   # Template para editar notas
    │   ├── home.html        # Template principal con listado de notas
    │   ├── login.html       # Template de login
-   │   └── note_form.html   # Template para crear nuevas notas (sin espacios)
+   │   └── note_form.html   # Template para crear nuevas notas
    ├── env/                 # Entorno virtual (ignorado en Git)
    ├── .gitignore           # Archivos/carpetas ignoradas por Git
    ├── app.py               # Punto de entrada de la aplicación
