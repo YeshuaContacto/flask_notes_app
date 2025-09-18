@@ -42,13 +42,28 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
 ## 📂 Estructura del Proyecto
    ```bash
    flask_notes_app/
-   │── app.py              # Punto de entrada de la aplicación
-   │── requirements.txt    # Dependencias del proyecto
-   │── .gitignore          # Archivos/carpetas ignoradas por Git
-   │── README.md           # Documentación del proyecto
-   ├── env/                # Entorno virtual (ignorado en Git)
-   ├── templates/          # Carpeta con los templates HTML
-   └── static/             # Carpeta para CSS, JS, imágenes y recursos estáticos
+   ├── auth/
+   │   └── routers.py       # Rutas de autenticación (login, logout)
+   ├── instance/
+   │   └── test_notes.db    # Base de datos de pruebas
+   ├── notes/
+   │   └── routers.py       # Rutas para notas
+   ├── templates/           # Carpeta con los templates HTML
+   │   ├── base.html        # Template base que heredan otros templates
+   │   ├── edit_note.html   # Template para editar notas
+   │   ├── home.html        # Template principal con listado de notas
+   │   ├── login.html       # Template de login
+   │   └── note_form.html   # Template para crear nuevas notas (sin espacios)
+   ├── env/                 # Entorno virtual (ignorado en Git)
+   ├── .gitignore           # Archivos/carpetas ignoradas por Git
+   ├── app.py               # Punto de entrada de la aplicación
+   ├── config.py            # Configuraciones de Flask
+   ├── models.py            # Modelos de la base de datos
+   ├── notes.sqlite         # Base de datos principal
+   ├── README.md            # Documentación del proyecto
+   ├── requirements.txt     # Dependencias del proyecto
+   │── test_notes.db        # Base de datos de pruebas
+   └── test_models.py       # Pruebas unitarias
    ```
 
 ## 🛠️ Tecnologías
