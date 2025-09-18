@@ -46,7 +46,9 @@ Este proyecto es ideal como base para practicar el desarrollo con Python y Flask
    │── requirements.txt    # Dependencias del proyecto
    │── .gitignore          # Archivos/carpetas ignoradas por Git
    │── README.md           # Documentación del proyecto
-   └── env/                # Entorno virtual (ignorado en Git)
+   ├── env/                # Entorno virtual (ignorado en Git)
+   ├── templates/          # Carpeta con los templates HTML
+   └── static/             # Carpeta para CSS, JS, imágenes y recursos estáticos
    ```
 
 ## 🛠️ Tecnologías
