@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Notas App{% endblock %}</title>
+
+    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fuente Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -18,14 +23,55 @@
 
 <body class="min-h-screen flex flex-col">
 
-    <!-- Navbar -->
-    <nav class="bg-white shadow-sm py-4">
-        <div class="container mx-auto flex justify-between items-center px-4">
+    <!-- Navbar responsive -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo / Nombre de la App -->
             <a href="{{ url_for('notes.home') }}" class="text-xl font-bold text-gray-800">Notas App</a>
-            <a href="{{ url_for('notes.create_note') }}"
+
+            <!-- Botones desktop -->
+            <div class="hidden md:flex items-center space-x-3">
+                {% if request.endpoint == 'notes.home' %}
+                <a href="{{ url_for('notes.create_note') }}"
                 class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Crear Nota</a>
+                {% endif %}
+
+                {% if session.get('user') %}
+                <form action="{{ url_for('auth.logout') }}" method="get" class="inline">
+                    <button type="submit"
+                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Cerrar sesión</button>
+                </form>
+                {% endif %}
+            </div>
+
+
+            <!-- Botón menú mobile -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <!-- Icono hamburguesa -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </nav>
+
+                <!-- Menú móvil colapsable -->
+                <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col space-y-2">
+                    {% if request.endpoint == 'notes.home' %}
+                    <a href="{{ url_for('notes.create_note') }}"
+                    class="block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Crear Nota</a>
+                    {% endif %}
+
+                    {% if session.get('user') %}
+                    <form action="{{ url_for('auth.logout') }}" method="get">
+                        <button type="submit"
+                                class="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Cerrar sesión</button>
+                    </form>
+                    {% endif %}
+                </div>
 
     <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -34,7 +80,10 @@
         {% for category, message in messages %}
         <div
             class="p-3 mb-2 rounded-lg
-                {% if category == 'success' %}bg-green-100 text-green-800{% elif category == 'error' %}bg-red-100 text-red-800{% elif category == 'warning' %}bg-yellow-100 text-yellow-800{% else %}bg-blue-100 text-blue-800{% endif %}">
+                {% if category == 'success' %}bg-green-100 text-green-800
+                {% elif category == 'error' %}bg-red-100 text-red-800
+                {% elif category == 'warning' %}bg-yellow-100 text-yellow-800
+                {% else %}bg-blue-100 text-blue-800{% endif %}">
             {{ message }}
         </div>
         {% endfor %}
@@ -49,10 +98,21 @@
 
     <!-- Footer -->
     <footer class="bg-white shadow-inner text-center p-4 mt-6 text-sm text-gray-500">
-        Este proyecto fue creado como parte del <a href="https://platzi.com/cursos/flask/"
-            class="text-blue-500 hover:underline" target="_blank">Curso de Flask en Platzi</a>, donde aprenderás a
-        desarrollar aplicaciones web con buenas prácticas.
+        Este proyecto fue creado como parte del 
+        <a href="https://platzi.com/cursos/flask/" class="text-blue-500 hover:underline" target="_blank">
+            Curso de Flask en Platzi
+        </a>, donde aprenderás a desarrollar aplicaciones web con buenas prácticas.
     </footer>
-</body>
 
+    <!-- Script para menú móvil -->
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
 </html>
